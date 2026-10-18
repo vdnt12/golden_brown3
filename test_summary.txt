@@ -1,0 +1,13 @@
+Company: Golden Brown Technologies
+Owner: Rahul Sharma
+Founded: 2024
+Location: Bengaluru
+Electricity Bill: ₹2,438
+Due Date: 15 October 2026
+Consumption: 324 units
+Account Number: GB202610001
+
+Additional Information:
+The company operates a software development center in Bengaluru.
+The electricity bill covers the September 2026 billing period.
+Payment must be made before the due date to avoid late charges.
