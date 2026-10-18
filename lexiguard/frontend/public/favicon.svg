@@ -1,0 +1,6 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LexiGuard shield">
+  <path d="M32 4 56 13v20c0 14-10 24-24 29C18 57 8 47 8 33V13Z" fill="#1f3a5f"/>
+  <path d="M32 12l16 6v15c0 10-7 17-16 21-9-4-16-11-16-21V18Z" fill="#2f5d8a"/>
+  <path d="M22 32l7 7 14-15" fill="none" stroke="#eaf2fb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

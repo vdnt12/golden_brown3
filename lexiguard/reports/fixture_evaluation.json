@@ -1,0 +1,442 @@
+{
+  "generated_at": "2026-10-18T10:22:56+00:00",
+  "documents": [
+    {
+      "fixture": "synthetic_rental_simple.txt",
+      "document_id": "1c42243092274944d51b739d94e76d27",
+      "pages": 1,
+      "sentences": 30,
+      "rent_clauses_matched": 7,
+      "overview": {
+        "found": 10,
+        "not_located": [
+          "Lock-in"
+        ],
+        "not_assessed": [],
+        "warnings": []
+      },
+      "review": {
+        "review_status": "ATTENTION",
+        "items": 5,
+        "by_category": {
+          "CONFLICT": 0,
+          "AMBIGUITY": 0,
+          "FINANCIAL": 2,
+          "JURISDICTION": 3,
+          "OTHER": 0
+        }
+      },
+      "ask": {
+        "rent": {
+          "status": "ANSWERED",
+          "claims": 1,
+          "citations": 1,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "rent_hallucinated": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "claims": 0,
+          "citations": 0,
+          "validation_codes": [
+            "LITERAL_NOT_IN_SOURCE",
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "notice": {
+          "status": "ANSWERED",
+          "claims": 1,
+          "citations": 1,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "legal": {
+          "status": "LEGAL_LIMIT",
+          "claims": 2,
+          "citations": 2,
+          "validation_codes": [],
+          "model_calls": 0
+        },
+        "absent": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "claims": 0,
+          "citations": 0,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "term": {
+          "status": "ANSWERED",
+          "claims": 2,
+          "citations": 2,
+          "validation_codes": [],
+          "model_calls": 0
+        },
+        "forged_sid": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED",
+            "SID_NOT_EXPOSED_IN_RUN"
+          ]
+        }
+      }
+    },
+    {
+      "fixture": "synthetic_rental_conflict.txt",
+      "document_id": "c97bf18a70e4e86801579ada7372ca16",
+      "pages": 1,
+      "sentences": 22,
+      "rent_clauses_matched": 4,
+      "overview": {
+        "found": 9,
+        "not_located": [
+          "Lock-in",
+          "Maintenance"
+        ],
+        "not_assessed": [],
+        "warnings": []
+      },
+      "review": {
+        "review_status": "ATTENTION",
+        "items": 8,
+        "by_category": {
+          "CONFLICT": 2,
+          "AMBIGUITY": 0,
+          "FINANCIAL": 4,
+          "JURISDICTION": 2,
+          "OTHER": 0
+        }
+      },
+      "ask": {
+        "rent": {
+          "status": "ANSWERED",
+          "claims": 1,
+          "citations": 1,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "rent_hallucinated": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "claims": 0,
+          "citations": 0,
+          "validation_codes": [
+            "LITERAL_NOT_IN_SOURCE",
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "notice": {
+          "status": "ANSWERED",
+          "claims": 1,
+          "citations": 1,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "legal": {
+          "status": "LEGAL_LIMIT",
+          "claims": 2,
+          "citations": 2,
+          "validation_codes": [],
+          "model_calls": 0
+        },
+        "absent": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "claims": 0,
+          "citations": 0,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "term": {
+          "status": "ANSWERED",
+          "claims": 2,
+          "citations": 2,
+          "validation_codes": [],
+          "model_calls": 0
+        },
+        "forged_sid": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED",
+            "SID_NOT_EXPOSED_IN_RUN"
+          ]
+        }
+      }
+    },
+    {
+      "fixture": "synthetic_rental_ambiguous.txt",
+      "document_id": "8c4d6f99b64961c130670a0a4adbc530",
+      "pages": 1,
+      "sentences": 16,
+      "rent_clauses_matched": 1,
+      "overview": {
+        "found": 7,
+        "not_located": [
+          "Term",
+          "Lock-in",
+          "Disputes",
+          "Pets"
+        ],
+        "not_assessed": [],
+        "warnings": []
+      },
+      "review": {
+        "review_status": "ATTENTION",
+        "items": 5,
+        "by_category": {
+          "CONFLICT": 0,
+          "AMBIGUITY": 1,
+          "FINANCIAL": 1,
+          "JURISDICTION": 3,
+          "OTHER": 0
+        }
+      },
+      "ask": {
+        "rent": {
+          "status": "ANSWERED",
+          "claims": 1,
+          "citations": 1,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "rent_hallucinated": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "claims": 0,
+          "citations": 0,
+          "validation_codes": [
+            "LITERAL_NOT_IN_SOURCE",
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "notice": {
+          "status": "ANSWERED",
+          "claims": 1,
+          "citations": 1,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "legal": {
+          "status": "LEGAL_LIMIT",
+          "claims": 2,
+          "citations": 2,
+          "validation_codes": [],
+          "model_calls": 0
+        },
+        "absent": {
+          "status": "NOT_LOCATED",
+          "claims": 0,
+          "citations": 0,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 0
+        },
+        "term": {
+          "status": "ANSWERED",
+          "claims": 2,
+          "citations": 2,
+          "validation_codes": [],
+          "model_calls": 0
+        },
+        "forged_sid": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED",
+            "SID_NOT_EXPOSED_IN_RUN"
+          ]
+        }
+      }
+    },
+    {
+      "fixture": "synthetic_rental_injection.txt",
+      "document_id": "9cdbc0f39d6d957f5bb18ed69451c72d",
+      "pages": 1,
+      "sentences": 21,
+      "rent_clauses_matched": 2,
+      "overview": {
+        "found": 7,
+        "not_located": [
+          "Lock-in",
+          "Penalties",
+          "Restrictions",
+          "Pets"
+        ],
+        "not_assessed": [],
+        "warnings": []
+      },
+      "review": {
+        "review_status": "ATTENTION",
+        "items": 3,
+        "by_category": {
+          "CONFLICT": 0,
+          "AMBIGUITY": 0,
+          "FINANCIAL": 0,
+          "JURISDICTION": 3,
+          "OTHER": 0
+        }
+      },
+      "ask": {
+        "rent": {
+          "status": "ANSWERED",
+          "claims": 1,
+          "citations": 1,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "rent_hallucinated": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "claims": 0,
+          "citations": 0,
+          "validation_codes": [
+            "LITERAL_NOT_IN_SOURCE",
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "notice": {
+          "status": "ANSWERED",
+          "claims": 1,
+          "citations": 1,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "legal": {
+          "status": "LEGAL_LIMIT",
+          "claims": 2,
+          "citations": 2,
+          "validation_codes": [],
+          "model_calls": 0
+        },
+        "absent": {
+          "status": "NOT_LOCATED",
+          "claims": 0,
+          "citations": 0,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 0
+        },
+        "term": {
+          "status": "ANSWERED",
+          "claims": 2,
+          "citations": 2,
+          "validation_codes": [],
+          "model_calls": 0
+        },
+        "forged_sid": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED",
+            "SID_NOT_EXPOSED_IN_RUN"
+          ]
+        }
+      }
+    },
+    {
+      "fixture": "synthetic_rental_indian_style.txt",
+      "document_id": "0869daa029dbdb849ea0ff481a491659",
+      "pages": 1,
+      "sentences": 35,
+      "rent_clauses_matched": 3,
+      "overview": {
+        "found": 10,
+        "not_located": [
+          "Pets"
+        ],
+        "not_assessed": [],
+        "warnings": []
+      },
+      "review": {
+        "review_status": "ATTENTION",
+        "items": 6,
+        "by_category": {
+          "CONFLICT": 0,
+          "AMBIGUITY": 0,
+          "FINANCIAL": 3,
+          "JURISDICTION": 3,
+          "OTHER": 0
+        }
+      },
+      "ask": {
+        "rent": {
+          "status": "ANSWERED",
+          "claims": 1,
+          "citations": 1,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "rent_hallucinated": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "claims": 0,
+          "citations": 0,
+          "validation_codes": [
+            "LITERAL_NOT_IN_SOURCE",
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "notice": {
+          "status": "ANSWERED",
+          "claims": 1,
+          "citations": 1,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 1
+        },
+        "legal": {
+          "status": "LEGAL_LIMIT",
+          "claims": 2,
+          "citations": 2,
+          "validation_codes": [],
+          "model_calls": 0
+        },
+        "absent": {
+          "status": "NOT_LOCATED",
+          "claims": 0,
+          "citations": 0,
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED"
+          ],
+          "model_calls": 0
+        },
+        "term": {
+          "status": "ANSWERED",
+          "claims": 2,
+          "citations": 2,
+          "validation_codes": [],
+          "model_calls": 0
+        },
+        "forged_sid": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "validation_codes": [
+            "OFF_TOPIC_HITS_DROPPED",
+            "SID_NOT_EXPOSED_IN_RUN"
+          ]
+        }
+      }
+    }
+  ]
+}

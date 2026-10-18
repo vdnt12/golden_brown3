@@ -1,0 +1,66 @@
+
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+      - name: Lint
+        run: python -m ruff check backend tests scripts
+      - name: Tests (socket-guarded; no live model)
+        run: python -m pytest -q
+
+  licences:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -e .
+      - name: Licence gate (AGPL/GPL/unknown fail)
+        run: python scripts/verify_licenses.py
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install --no-audit --no-fund
+      - run: npm run build
+
+  no-cdn:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Frontend contains no external hosts or CDNs
+        run: |
+          matches=$(grep -RInE "https?://" \
+            --include="*.ts" --include="*.tsx" --include="*.html" --include="*.css" \
+            frontend 2>/dev/null | grep -vE "127\\.0\\.0\\.1|localhost" || true)
+          if [ -n "$matches" ]; then
+            echo "$matches"
+            echo "External URL found in frontend assets"
+            exit 1
+          fi
+          echo "No external hosts found"

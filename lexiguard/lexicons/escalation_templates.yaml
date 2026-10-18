@@ -1,0 +1,21 @@
+# Backend-owned escalation templates (Guide 13.1 "Questions to bring").
+# Neutral wording; no verdicts, no predictions, no advice to sign.
+version: 1
+templates:
+  ambiguity: >-
+    Clause {section} (page {page}) says "{quote}". Ask: how is {topic} treated where the
+    property is located, and does it change what this clause means for me?
+  concern: >-
+    Clause {section} (page {page}) places {topic} wording in the agreement: "{quote}".
+    Ask: what does this wording require of me in practice, and what happens if it is missed?
+  conflict: >-
+    Clause {section_a} (page {page_a}) says "{quote_a}" while clause {section_b}
+    (page {page_b}) says "{quote_b}". Ask: which wording applies, and how should the
+    difference be resolved before signing?
+  jurisdiction: >-
+    Clause {section} (page {page}) covers {topic}, which can depend on local law.
+    Ask: what does local law require for {topic} where the property is located?
+footer: >-
+  Bring this agreement, any stamp or registration papers, and payment receipts.
+  Consult a qualified lawyer experienced in tenancy matters in the state where the
+  property is located.

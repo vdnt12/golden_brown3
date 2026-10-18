@@ -1,0 +1,233 @@
+{
+  "document": {
+    "document_id": "40eed983da0a77e76b84b855d87645ba",
+    "display_name": "synthetic_rental_conflict.txt",
+    "page_count": 1,
+    "sha256": "d8619705a4384d7258e62095ce5db07ac1564c9271a5e3b977b2449276c5baef"
+  },
+  "cards": {
+    "Parties": {
+      "status": "FOUND",
+      "summary": "Rao (\"Landlord\") and Ms. K.",
+      "evidence": [
+        {
+          "sid": "s_0002",
+          "page": 1,
+          "section": "1",
+          "quote": "Rao (\"Landlord\") and Ms. K.",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0003",
+          "page": 1,
+          "section": "1",
+          "quote": "Iyer (\"Tenant\") and relates",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0008",
+          "page": 1,
+          "section": "6",
+          "quote": "The Tenant shall give sixty (60) days' written notice before vacating the premises.",
+          "ocr_derived": false
+        }
+      ],
+      "note": "Who the agreement names as the parties."
+    },
+    "Term": {
+      "status": "FOUND",
+      "summary": "The tenancy is for eleven months beginning 1 January 2027.",
+      "evidence": [
+        {
+          "sid": "s_0005",
+          "page": 1,
+          "section": "2",
+          "quote": "The tenancy is for eleven months beginning 1 January 2027.",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0020",
+          "page": 1,
+          "section": "18",
+          "quote": "Rent shall not increase during the term.",
+          "ocr_derived": false
+        }
+      ],
+      "note": "When the agreement starts, ends and whether it renews."
+    },
+    "Rent": {
+      "status": "FOUND",
+      "summary": "Rent is Rs. 30,000/- per month, payable by the 5th day of the month.",
+      "evidence": [
+        {
+          "sid": "s_0006",
+          "page": 1,
+          "section": "3",
+          "quote": "Rent is Rs. 30,000/- per month, payable by the 5th day of the month.",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0010",
+          "page": 1,
+          "section": "14",
+          "quote": "one month's rent as compensation.",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0020",
+          "page": 1,
+          "section": "18",
+          "quote": "Rent shall not increase during the term.",
+          "ocr_derived": false
+        }
+      ],
+      "note": "Amount, due date and escalation of the rent."
+    },
+    "Deposit": {
+      "status": "FOUND",
+      "summary": "The deposit is Rs. 60,000/-, refundable after handover subject to deductions.",
+      "evidence": [
+        {
+          "sid": "s_0007",
+          "page": 1,
+          "section": "4",
+          "quote": "The deposit is Rs. 60,000/-, refundable after handover subject to deductions.",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0011",
+          "page": 1,
+          "section": "15",
+          "quote": "The Landlord may deduct the cost of repainting the flat from the deposit after every",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0014",
+          "page": 1,
+          "section": "16",
+          "quote": "The deposit shall be refunded in full within seven days of handover without any",
+          "ocr_derived": false
+        }
+      ],
+      "note": "What is held, when it is returned and what may be deducted."
+    },
+    "Notice": {
+      "status": "FOUND",
+      "summary": "The Tenant shall give sixty (60) days' written notice before vacating the premises.",
+      "evidence": [
+        {
+          "sid": "s_0008",
+          "page": 1,
+          "section": "6",
+          "quote": "The Tenant shall give sixty (60) days' written notice before vacating the premises.",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0009",
+          "page": 1,
+          "section": "14",
+          "quote": "Notwithstanding clause 6, the Tenant may exit with thirty (30) days' notice by paying",
+          "ocr_derived": false
+        }
+      ],
+      "note": "How much notice either side must give."
+    },
+    "Lock-in": {
+      "status": "NOT_LOCATED",
+      "summary": "",
+      "evidence": [],
+      "note": "Not located in the readable text that was checked. This does not mean it is allowed or prohibited."
+    },
+    "Penalties": {
+      "status": "FOUND",
+      "summary": "The deposit is Rs. 60,000/-, refundable after handover subject to deductions.",
+      "evidence": [
+        {
+          "sid": "s_0007",
+          "page": 1,
+          "section": "4",
+          "quote": "The deposit is Rs. 60,000/-, refundable after handover subject to deductions.",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0011",
+          "page": 1,
+          "section": "15",
+          "quote": "The Landlord may deduct the cost of repainting the flat from the deposit after every",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0013",
+          "page": 1,
+          "section": "15",
+          "quote": "Clause 4 applies to such deductions.",
+          "ocr_derived": false
+        }
+      ],
+      "note": "Charges, forfeiture or deductions the agreement allows."
+    },
+    "Restrictions": {
+      "status": "FOUND",
+      "summary": "prohibited pets, does not apply.",
+      "evidence": [
+        {
+          "sid": "s_0019",
+          "page": 1,
+          "section": "17",
+          "quote": "prohibited pets, does not apply.",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0020",
+          "page": 1,
+          "section": "18",
+          "quote": "Rent shall not increase during the term.",
+          "ocr_derived": false
+        }
+      ],
+      "note": "What the agreement says the tenant must not do."
+    },
+    "Maintenance": {
+      "status": "NOT_LOCATED",
+      "summary": "",
+      "evidence": [],
+      "note": "Not located in the readable text that was checked. This does not mean it is allowed or prohibited."
+    },
+    "Disputes": {
+      "status": "FOUND",
+      "summary": "to Flat 9, Rose Court, Hubballi.",
+      "evidence": [
+        {
+          "sid": "s_0004",
+          "page": 1,
+          "section": "1",
+          "quote": "to Flat 9, Rose Court, Hubballi.",
+          "ocr_derived": false
+        }
+      ],
+      "note": "Where disputes are said to be handled and which law governs."
+    },
+    "Pets": {
+      "status": "FOUND",
+      "summary": "Pets are permitted with written consent.",
+      "evidence": [
+        {
+          "sid": "s_0017",
+          "page": 1,
+          "section": "17",
+          "quote": "Pets are permitted with written consent.",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0019",
+          "page": 1,
+          "section": "17",
+          "quote": "prohibited pets, does not apply.",
+          "ocr_derived": false
+        }
+      ],
+      "note": "Whether pets are allowed, and on what conditions."
+    }
+  },
+  "warnings": []
+}

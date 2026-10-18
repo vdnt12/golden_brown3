@@ -1,0 +1,92 @@
+{
+  "generated_at": "2026-10-18T10:22:30+00:00",
+  "dataset": {
+    "name": "CUAD v1",
+    "license": "CC BY 4.0",
+    "source": "https://huggingface.co/datasets/theatticusproject/cuad",
+    "sha256": "ed0b77d85bdf4014d7495800e8e4a70565b48ee6f8a2e5dca9cf8655dbf10eae",
+    "contracts_total": 510,
+    "contracts_sampled": 510
+  },
+  "ingest": {
+    "succeeded": 510,
+    "failed": 0,
+    "failures": [],
+    "pages_min": 1,
+    "pages_max": 189,
+    "duration_ms_median": 78.0
+  },
+  "quotes": {
+    "checked": 9731,
+    "exact_substring_failures": 0,
+    "examples": []
+  },
+  "review_items_total": 3715,
+  "concepts": {
+    "disputes": {
+      "gold_contracts": 437,
+      "gold_spans": 464,
+      "found": 436,
+      "not_located": 1,
+      "matcher_hits": 433,
+      "map_recall_pct": 99.8,
+      "false_silence_pct": 0.2,
+      "matcher_recall_pct": 93.3
+    },
+    "notice": {
+      "gold_contracts": 111,
+      "gold_spans": 122,
+      "found": 110,
+      "not_located": 1,
+      "matcher_hits": 92,
+      "map_recall_pct": 99.1,
+      "false_silence_pct": 0.9,
+      "matcher_recall_pct": 75.4
+    },
+    "parties": {
+      "gold_contracts": 509,
+      "gold_spans": 2554,
+      "found": 487,
+      "not_located": 15,
+      "matcher_hits": 61,
+      "map_recall_pct": 95.7,
+      "false_silence_pct": 2.9,
+      "matcher_recall_pct": 2.4
+    },
+    "penalties": {
+      "gold_contracts": 61,
+      "gold_spans": 121,
+      "found": 60,
+      "not_located": 1,
+      "matcher_hits": 70,
+      "map_recall_pct": 98.4,
+      "false_silence_pct": 1.6,
+      "matcher_recall_pct": 57.9
+    },
+    "restrictions": {
+      "gold_contracts": 430,
+      "gold_spans": 883,
+      "found": 426,
+      "not_located": 4,
+      "matcher_hits": 191,
+      "map_recall_pct": 99.1,
+      "false_silence_pct": 0.9,
+      "matcher_recall_pct": 21.6
+    },
+    "term": {
+      "gold_contracts": 1449,
+      "gold_spans": 1600,
+      "found": 1401,
+      "not_located": 35,
+      "matcher_hits": 648,
+      "map_recall_pct": 96.7,
+      "false_silence_pct": 2.4,
+      "matcher_recall_pct": 40.5
+    }
+  },
+  "notes": [
+    "CUAD is a commercial-contract corpus, not a tenancy corpus.",
+    "CUAD gold spans are lawyer-selected review highlights, not an exhaustive list of every sentence about a topic; 'found without gold label' is therefore not counted as a false positive.",
+    "No model was called. This measures ingestion, concept matching, mapping and rendering."
+  ]
+}

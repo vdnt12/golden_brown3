@@ -1,0 +1,46 @@
+[
+  {
+    "alias": "gemma",
+    "http_status": 200,
+    "inference": "stub runtime (not a model)",
+    "status": "ANSWERED",
+    "answer": "Here is what the readable text says, with the passage quoted below.",
+    "claims": [
+      {
+        "text": "The Tenant shall give sixty (60) days' written notice before vacating the premises.",
+        "quote": "The Tenant shall give sixty (60) days' written notice before vacating the premises.",
+        "page": 1,
+        "sid": "s_0008"
+      }
+    ],
+    "model_tag": "gemma4:e4b-it-q4_K_M",
+    "model_calls": 1,
+    "tool_calls": 1,
+    "validation_codes": [
+      "OFF_TOPIC_HITS_DROPPED"
+    ],
+    "legal_verdict": null
+  },
+  {
+    "alias": "hermes",
+    "http_status": 200,
+    "inference": "stub runtime (not a model)",
+    "status": "ANSWERED",
+    "answer": "Here is what the readable text says, with the passage quoted below.",
+    "claims": [
+      {
+        "text": "The Tenant shall give sixty (60) days' written notice before vacating the premises.",
+        "quote": "The Tenant shall give sixty (60) days' written notice before vacating the premises.",
+        "page": 1,
+        "sid": "s_0008"
+      }
+    ],
+    "model_tag": "hermes3:8b",
+    "model_calls": 1,
+    "tool_calls": 1,
+    "validation_codes": [
+      "OFF_TOPIC_HITS_DROPPED"
+    ],
+    "legal_verdict": null
+  }
+]

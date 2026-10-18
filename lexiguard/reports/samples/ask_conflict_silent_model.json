@@ -1,0 +1,56 @@
+{
+  "status": "INSUFFICIENT_EVIDENCE",
+  "answer": "I found related passages but could not validate a supported statement against them, so nothing is asserted. Try naming the clause or the exact figure you are asking about.",
+  "claims": [],
+  "interpretations": [],
+  "concerns": [],
+  "ambiguities": [],
+  "conflicts": [],
+  "general_explanations": [],
+  "missing_information": [
+    {
+      "code": "CONTEXT_REQUIRED",
+      "message": "I found related passages but could not validate a supported statement against them, so nothing is asserted. Try naming the clause or the exact figure you are asking about.",
+      "evidence": [],
+      "searches": [
+        "rent"
+      ]
+    }
+  ],
+  "extraction_warnings": [],
+  "jurisdiction_flags": [],
+  "escalation": [],
+  "external_law_required": false,
+  "recommend_professional_review": false,
+  "legal_verdict": null,
+  "document": {
+    "document_id": "40eed983da0a77e76b84b855d87645ba",
+    "display_name": "synthetic_rental_conflict.txt",
+    "page_count": 1,
+    "sha256": "d8619705a4384d7258e62095ce5db07ac1564c9271a5e3b977b2449276c5baef"
+  },
+  "run_meta": {
+    "route": "FACT_LOOKUP",
+    "path": "FAST",
+    "provider": "ollama",
+    "model_tag": "scripted",
+    "model_digest": null,
+    "duration_ms": 9,
+    "tool_calls": 1,
+    "model_calls": 1,
+    "retrieval_loops": 0,
+    "chunks_considered": 7,
+    "validation_codes": [
+      "OFF_TOPIC_HITS_DROPPED"
+    ],
+    "sids_exposed": [
+      "s_0005",
+      "s_0006",
+      "s_0007",
+      "s_0009",
+      "s_0010",
+      "s_0020",
+      "s_0021"
+    ]
+  }
+}

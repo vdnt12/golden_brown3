@@ -1,0 +1,172 @@
+{
+  "document": {
+    "document_id": "40eed983da0a77e76b84b855d87645ba",
+    "display_name": "synthetic_rental_conflict.txt",
+    "page_count": 1,
+    "sha256": "d8619705a4384d7258e62095ce5db07ac1564c9271a5e3b977b2449276c5baef"
+  },
+  "review_status": "ATTENTION",
+  "attention_first": [
+    {
+      "category": "CONFLICT",
+      "priority": 1,
+      "title": "Possible conflicting rent wording",
+      "reason": "Section 3 and section 14 attach different values (one month, rs.30000) to the same topic. Whether these clauses really conflict needs a human reading; both passages are quoted.",
+      "citations": [
+        {
+          "sid": "s_0006",
+          "page": 1,
+          "section": "3",
+          "quote": "Rent is Rs. 30,000/- per month, payable by the 5th day of the month.",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0010",
+          "page": 1,
+          "section": "14",
+          "quote": "one month's rent as compensation.",
+          "ocr_derived": false
+        }
+      ],
+      "order_reason": "Listed first: two passages that appear to disagree are the most useful thing to read before signing."
+    },
+    {
+      "category": "CONFLICT",
+      "priority": 1,
+      "title": "Possible conflicting deposit wording",
+      "reason": "Section 4 and section 16 attach different values (rs.60000, seven days) to the same topic. Whether these clauses really conflict needs a human reading; both passages are quoted.",
+      "citations": [
+        {
+          "sid": "s_0007",
+          "page": 1,
+          "section": "4",
+          "quote": "The deposit is Rs. 60,000/-, refundable after handover subject to deductions.",
+          "ocr_derived": false
+        },
+        {
+          "sid": "s_0014",
+          "page": 1,
+          "section": "16",
+          "quote": "The deposit shall be refunded in full within seven days of handover without any",
+          "ocr_derived": false
+        }
+      ],
+      "order_reason": "Listed first: two passages that appear to disagree are the most useful thing to read before signing."
+    },
+    {
+      "category": "FINANCIAL",
+      "priority": 3,
+      "title": "Money clause mentioning “deductions”",
+      "reason": "This passage attaches a payment, deduction, forfeiture, penalty or lock-in consequence. It is quoted below so the amount and the trigger can be checked together.",
+      "citations": [
+        {
+          "sid": "s_0007",
+          "page": 1,
+          "section": "4",
+          "quote": "The deposit is Rs. 60,000/-, refundable after handover subject to deductions.",
+          "ocr_derived": false
+        }
+      ],
+      "order_reason": "Listed after ambiguity: a stated financial consequence is easier to read than vague wording, but still worth confirming."
+    },
+    {
+      "category": "FINANCIAL",
+      "priority": 3,
+      "title": "Money clause mentioning “deduct”",
+      "reason": "This passage attaches a payment, deduction, forfeiture, penalty or lock-in consequence. It is quoted below so the amount and the trigger can be checked together.",
+      "citations": [
+        {
+          "sid": "s_0011",
+          "page": 1,
+          "section": "15",
+          "quote": "The Landlord may deduct the cost of repainting the flat from the deposit after every",
+          "ocr_derived": false
+        }
+      ],
+      "order_reason": "Listed after ambiguity: a stated financial consequence is easier to read than vague wording, but still worth confirming."
+    },
+    {
+      "category": "FINANCIAL",
+      "priority": 3,
+      "title": "Money clause mentioning “deductions”",
+      "reason": "This passage attaches a payment, deduction, forfeiture, penalty or lock-in consequence. It is quoted below so the amount and the trigger can be checked together.",
+      "citations": [
+        {
+          "sid": "s_0013",
+          "page": 1,
+          "section": "15",
+          "quote": "Clause 4 applies to such deductions.",
+          "ocr_derived": false
+        }
+      ],
+      "order_reason": "Listed after ambiguity: a stated financial consequence is easier to read than vague wording, but still worth confirming."
+    },
+    {
+      "category": "FINANCIAL",
+      "priority": 3,
+      "title": "Money clause mentioning “deduction”",
+      "reason": "This passage attaches a payment, deduction, forfeiture, penalty or lock-in consequence. It is quoted below so the amount and the trigger can be checked together.",
+      "citations": [
+        {
+          "sid": "s_0015",
+          "page": 1,
+          "section": "16",
+          "quote": "deduction.",
+          "ocr_derived": false
+        }
+      ],
+      "order_reason": "Listed after ambiguity: a stated financial consequence is easier to read than vague wording, but still worth confirming."
+    },
+    {
+      "category": "JURISDICTION",
+      "priority": 4,
+      "title": "May depend on local law: deposit",
+      "reason": "This passage covers a topic whose effect commonly depends on local law. LexiGuard does not state what local law requires.",
+      "citations": [
+        {
+          "sid": "s_0007",
+          "page": 1,
+          "section": "4",
+          "quote": "The deposit is Rs. 60,000/-, refundable after handover subject to deductions.",
+          "ocr_derived": false
+        }
+      ],
+      "order_reason": "Listed after the document's own wording: local-law questions need someone qualified in the relevant place."
+    },
+    {
+      "category": "JURISDICTION",
+      "priority": 4,
+      "title": "May depend on local law: notice",
+      "reason": "This passage covers a topic whose effect commonly depends on local law. LexiGuard does not state what local law requires.",
+      "citations": [
+        {
+          "sid": "s_0008",
+          "page": 1,
+          "section": "6",
+          "quote": "The Tenant shall give sixty (60) days' written notice before vacating the premises.",
+          "ocr_derived": false
+        }
+      ],
+      "order_reason": "Listed after the document's own wording: local-law questions need someone qualified in the relevant place."
+    }
+  ],
+  "questions_for_professional": [
+    {
+      "topic": "conflict",
+      "prompt": "Clause 3 (page 1) says \"Rent is Rs. 30,000/- per month, payable by the 5th day of the month.\" while clause 14 (page 1) says \"one month's rent as compensation.\". Ask: which wording applies, and how should the difference be resolved before signing?"
+    },
+    {
+      "topic": "conflict",
+      "prompt": "Clause 4 (page 1) says \"The deposit is Rs. 60,000/-, refundable after handover subject to deductions.\" while clause 16 (page 1) says \"The deposit shall be refunded in full within seven days of handover without any\". Ask: which wording applies, and how should the difference be resolved before signing?"
+    },
+    {
+      "topic": "jurisdiction",
+      "prompt": "Clause 4 (page 1) covers deposit, which can depend on local law. Ask: what does local law require for deposit where the property is located?"
+    },
+    {
+      "topic": "jurisdiction",
+      "prompt": "Clause 6 (page 1) covers notice, which can depend on local law. Ask: what does local law require for notice where the property is located?"
+    }
+  ],
+  "disclaimer": "This is a review aid, not a legal assessment, risk score or advice. Items are ordered for reading convenience only."
+}

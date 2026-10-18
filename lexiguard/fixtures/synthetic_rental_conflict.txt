@@ -1,0 +1,38 @@
+RENTAL AGREEMENT (SYNTHETIC -- CONFLICT FIXTURE)
+
+1. Parties
+This agreement is between Mr. S. Rao ("Landlord") and Ms. K. Iyer ("Tenant") and relates
+to Flat 9, Rose Court, Hubballi.
+
+2. Term
+The tenancy is for eleven months beginning 1 January 2027.
+
+3. Rent
+Rent is Rs. 30,000/- per month, payable by the 5th day of the month.
+
+4. Security deposit
+The deposit is Rs. 60,000/-, refundable after handover subject to deductions.
+
+6. Notice by tenant
+The Tenant shall give sixty (60) days' written notice before vacating the premises.
+
+14. Early exit
+Notwithstanding clause 6, the Tenant may exit with thirty (30) days' notice by paying
+one month's rent as compensation.
+
+15. Deposit deduction
+The Landlord may deduct the cost of repainting the flat from the deposit after every
+tenancy. Clause 4 applies to such deductions.
+
+16. Deposit refund
+The deposit shall be refunded in full within seven days of handover without any
+deduction. This clause overrides clause 15.
+
+17. Pets
+Pets are permitted with written consent. Clause 17 of the previous agreement, which
+prohibited pets, does not apply.
+
+18. Rent revision
+Rent shall not increase during the term. Rent shall increase by 10% after six months.
+
+Synthetic test reference: CANARY-LG-CONFLICT-003 (not personal data)

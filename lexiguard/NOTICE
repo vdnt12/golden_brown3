@@ -1,0 +1,22 @@
+LexiGuard
+Copyright 2026 the LexiGuard contributors
+
+This product includes software developed by the LexiGuard contributors.
+
+This product is designed to run against the following third-party components, which are not
+distributed with this repository:
+
+  * Gemma 4 model weights, distributed by Google under the Apache License 2.0 (per the model
+    card; the verbatim licence text must be copied into docs/MODEL_LICENSE.md when the model
+    version and digest are pinned).
+  * Ollama, licensed under the MIT License, used as a local runtime on 127.0.0.1:11434.
+  * pypdfium2 / PDFium: Apache-2.0 OR BSD-3-Clause. When the PDF parser is bundled in a release,
+    the PDFium licence texts from pypdfium2's BUILD_LICENSES must be included here.
+  * Tesseract OCR (optional, Phase 1b): Apache-2.0. Language-data licences to be recorded when
+    OCR is added.
+
+Frontend dependencies are bundled by the Vite build; their licences are recorded in the release
+SBOM produced by scripts/generate_sbom.sh. No CDN-hosted assets are used at runtime.
+
+This NOTICE file must be preserved in redistributions of this repository, in addition to the
+Apache License 2.0 in LICENSE.

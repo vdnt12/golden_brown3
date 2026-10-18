@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LexiGuard v3.1 — architecture overview</title>
+<style>
+  :root{
+    --ink:#0f172a; --muted:#475569; --line:#d7dee8; --bg:#f6f8fb; --card:#ffffff;
+    --accent:#0f766e; --accent-soft:#e6f5f2; --accent-line:#99d6cd;
+    --warn:#b45309; --warn-soft:#fff4df; --warn-line:#f0c987;
+    --danger:#b91c1c; --danger-soft:#fdecec; --danger-line:#f0b4b4;
+    --gray:#64748b; --gray-soft:#f1f5f9;
+    --ok:#15803d; --ok-soft:#e8f6ec;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 24px 72px}
+  header.top{margin-bottom:28px}
+  .kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  h1{font-size:34px;line-height:1.15;margin:8px 0 6px;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:16px;max-width:820px}
+  .banner{margin-top:18px;border:1px solid var(--warn-line);background:var(--warn-soft);
+    border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+  .banner strong{color:var(--warn)}
+  .banner p{margin:0;color:#6b4a12;font-size:14px}
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 8px}
+  nav.toc a{font-size:13px;text-decoration:none;color:var(--muted);border:1px solid var(--line);
+    background:var(--card);padding:5px 10px;border-radius:999px}
+  nav.toc a:hover{border-color:var(--accent-line);color:var(--accent)}
+  section{margin-top:40px}
+  h2{font-size:22px;margin:0 0 6px;letter-spacing:-.01em}
+  h2 .num{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:8px}
+  .lede{color:var(--muted);margin:0 0 18px;max-width:900px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;
+    padding:3px 9px;border-radius:999px;border:1px solid var(--line);background:var(--gray-soft);color:var(--muted)}
+  .chip i{width:8px;height:8px;border-radius:50%;background:currentColor;display:inline-block}
+  .chip.done{color:var(--ok);background:var(--ok-soft);border-color:#bfe3c9}
+  .chip.part{color:var(--warn);background:var(--warn-soft);border-color:var(--warn-line)}
+  .chip.stub{color:var(--danger);background:var(--danger-soft);border-color:var(--danger-line)}
+  .chip.plan{color:var(--gray);background:var(--gray-soft)}
+
+  /* ---------- layer diagram ---------- */
+  .sys{display:grid;grid-template-columns:minmax(0,1fr) 268px;gap:18px;align-items:start}
+  .stack{display:flex;flex-direction:column;gap:0}
+  .node{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+    box-shadow:0 1px 0 rgba(15,23,42,.03)}
+  .node h3{margin:0 0 3px;font-size:14px}
+  .node p{margin:0;font-size:12.5px;color:var(--muted)}
+  .browser{border-color:var(--accent-line);background:linear-gradient(180deg,#fff, #f2fbf9)}
+  .api{border:1.5px dashed #9aa8bb;border-radius:16px;padding:16px;background:rgba(255,255,255,.55)}
+  .api-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+  .api-head h3{margin:0;font-size:15px}
+  .api-head span{font-size:12px;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .layer{border-radius:10px;padding:11px 13px;border:1px solid var(--line);background:var(--card)}
+  .layer .lt{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .layer .ln{font-size:13.5px;font-weight:650;margin:1px 0 2px}
+  .layer .ld{font-size:12px;color:var(--muted)}
+  .layer.core{border-color:var(--accent-line);background:var(--accent-soft)}
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+  .svc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+  .svc b{display:block;font-size:12.5px}
+  .svc span{font-size:11px;color:var(--muted)}
+  .arrow{height:22px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:13px}
+  .side{display:flex;flex-direction:column;gap:14px}
+  .side .node.model{border-color:#bfd0f0;background:linear-gradient(180deg,#fff,#f4f7ff)}
+  .side .node.disk{border-color:#e2d3f0;background:linear-gradient(180deg,#fff,#faf5ff)}
+  .side .tag{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+  .note{font-size:12px;color:var(--muted);margin-top:10px}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;
+    background:#eef2f7;padding:1px 5px;border-radius:4px}
+
+  /* ---------- sequence ---------- */
+  ol.flow{list-style:none;counter-reset:s;margin:0;padding:0}
+  ol.flow li{position:relative;padding:0 0 16px 46px;border-left:2px solid var(--line);margin-left:16px}
+  ol.flow li:last-child{border-left-color:transparent;padding-bottom:0}
+  ol.flow li::before{counter-increment:s;content:counter(s);position:absolute;left:-17px;top:-2px;
+    width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:13px;
+    display:flex;align-items:center;justify-content:center;border:3px solid var(--bg)}
+  ol.flow h4{margin:2px 0 2px;font-size:14px}
+  ol.flow p{margin:0;color:var(--muted);font-size:13px}
+  .who{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-right:6px}
+
+  /* ---------- tables ---------- */
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card)}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#f8fafc}
+  tr:last-child td{border-bottom:none}
+  .tight td, .tight th{padding:8px 10px}
+  .wrap-table{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+
+  /* ---------- data model ---------- */
+  .dm{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px}
+  .dm .ent{flex:1 1 150px;border:1px solid var(--line);border-radius:10px;background:var(--card);padding:11px 12px}
+  .dm .ent b{font-size:13px}
+  .dm .ent span{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
+  .dm .rel{display:flex;align-items:center;color:#94a3b8;font-size:18px;padding:0 2px}
+  .dm .ent.hot{border-color:var(--accent-line);background:var(--accent-soft)}
+
+  /* ---------- precedence ---------- */
+  .ladder{display:flex;flex-direction:column;gap:6px;max-width:760px}
+  .rung{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:center}
+  .rung .n{font-size:11px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+  .rung .bar{border-radius:7px;padding:8px 12px;border:1px solid var(--line);background:var(--card);font-size:13px;
+    display:flex;justify-content:space-between;gap:12px}
+  .rung .bar em{font-style:normal;color:var(--muted);font-size:11.5px}
+  .rung.hard .bar{border-color:var(--danger-line);background:var(--danger-soft)}
+  .rung.med .bar{border-color:var(--warn-line);background:var(--warn-soft)}
+  .rung.soft .bar{border-color:var(--accent-line);background:var(--accent-soft)}
+  .rung.ok .bar{border-color:#bfe3c9;background:var(--ok-soft)}
+
+  /* ---------- phases ---------- */
+  .phasegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px}
+  .ph{border:1px solid var(--line);border-radius:10px;padding:10px 11px;background:var(--card)}
+  .ph b{display:block;font-size:12px}
+  .ph span{font-size:11px;color:var(--muted)}
+  .ph.done{border-color:#bfe3c9;background:var(--ok-soft)}
+  .ph.part{border-color:var(--warn-line);background:var(--warn-soft)}
+  .ph.todo{background:var(--gray-soft)}
+  .ph.next{border-color:var(--accent-line);background:var(--accent-soft)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .mini{font-size:12.5px;color:var(--muted)}
+  .mini b{color:var(--ink)}
+  ul.tight2{margin:8px 0 0;padding-left:18px}
+  ul.tight2 li{margin:3px 0;color:var(--muted);font-size:13px}
+  footer{margin-top:44px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:12.5px}
+  @media (max-width:900px){
+    .sys{grid-template-columns:1fr}
+    .services{grid-template-columns:1fr}
+    .grid2{grid-template-columns:1fr}
+  }
+  @media print{ body{background:#fff} .card,.node{box-shadow:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">LexiGuard v3.1 · architecture overview</div>
+  <h1>Local-first legal-document triage</h1>
+  <p class="sub">A one-page map of the built system: components, trust boundaries, request lifecycle,
+  data model, status ladder and build order. The design authority is
+  <code>docs/SOLUTION_GUIDE_v3.md</code>.</p>
+  <div class="banner">
+    <div style="font-size:18px;line-height:1">⚠️</div>
+    <p><strong>Working local build, unmeasured model.</strong> Upload, document map, ask, review, page
+    viewer and delete all run; the full flow is covered by an end-to-end test and a five-fixture
+    evaluation. No live Gemma model was available here, so model accuracy, latency and privacy
+    isolation are <em>not</em> measured. Green chips mean “implemented and exercised by a committed
+    test or run”, not “accurate on real contracts”.</p>
+  </div>
+  <nav class="toc">
+    <a href="#layers">1 · Layers &amp; boundaries</a>
+    <a href="#lifecycle">2 · Ask lifecycle</a>
+    <a href="#trust">3 · Trust boundaries</a>
+    <a href="#data">4 · Data model</a>
+    <a href="#modules">5 · Module map</a>
+    <a href="#status">6 · Status precedence</a>
+    <a href="#phases">7 · Build order</a>
+  </nav>
+</header>
+
+<!-- 1 -->
+<section id="layers">
+  <h2><span class="num">1</span>Layers and trust boundaries</h2>
+  <p class="lede">Everything runs in one process tree on one machine. The browser talks to FastAPI over
+  loopback; FastAPI talks to Ollama over loopback; document data stays in per-document SQLite files.
+  The model is the only component that <em>proposes</em> text — it never authors quotes, pages or statuses.</p>
+
+  <div class="chips" style="margin-bottom:14px">
+    <span class="chip done"><i></i>implemented + tested</span>
+    <span class="chip part"><i></i>seam / partial</span>
+    <span class="chip stub"><i></i>unexercised (no OCR/model here)</span>
+    <span class="chip plan"><i></i>not built</span>
+  </div>
+
+  <div class="sys">
+    <div class="stack">
+      <div class="node browser">
+        <h3>Browser — React + Vite + TypeScript <span class="chip done" style="float:right"><i></i>builds</span></h3>
+        <p>Launch link carries a one-time code in the URL fragment → exchanged for a memory-only bearer
+        token. No storage APIs, no CDN, no inline script/style. Shows quotes, citations and statuses only.</p>
+      </div>
+      <div class="arrow">↓ <span style="font-size:11.5px;margin-left:6px">loopback · bearer on every <code>/api/*</code></span></div>
+
+      <div class="api">
+        <div class="api-head">
+          <h3>LexiGuard API — FastAPI</h3>
+          <span>127.0.0.1:8765</span>
+        </div>
+
+        <div class="layer">
+          <div class="lt">Layer 1</div>
+          <div class="ln">Security middleware <span class="chip done"><i></i>tested</span></div>
+          <div class="ld">Exact Host allowlist · Origin allowlist on writes · bearer auth · CSP <code>default-src 'self'</code> · <code>no-store</code> · no wildcard CORS</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="layer">
+          <div class="lt">Layer 2</div>
+          <div class="ln">API routes <span class="chip part"><i></i>session/health real</span> <span class="chip stub"><i></i>documents · ask · review · overview</span></div>
+          <div class="ld"><code>/api/session</code> · <code>/api/health</code> · <code>/api/documents…</code> · <code>…/ask</code> · <code>…/review</code> · <code>…/overview</code> · <code>…/evidence/{id}</code></div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="layer core">
+          <div class="lt">Layer 3 · domain services</div>
+          <div class="ln">Ingest · Retrieval · Bounded agent runtime</div>
+          <div class="ld">Deterministic where it matters; every loop and call is capped.</div>
+          <div class="services">
+            <div class="svc"><b>ingest/ <span class="chip part" style="padding:1px 6px"><i></i>partial</span></b><span>upload · normalise · segment · language/quality · parser (TXT real, PDF seam) · OCR seam</span></div>
+            <div class="svc"><b>retrieval/ <span class="chip done" style="padding:1px 6px"><i></i>primitives</span></b><span>FTS5 BM25 · topics · cross-refs · silence gate · bounded packets</span></div>
+            <div class="svc"><b>agent/ <span class="chip part" style="padding:1px 6px"><i></i>contracts</span></b><span>pre-router · 7 tools · prompts · state machine (bodies Phase 4)</span></div>
+          </div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="layer">
+          <div class="lt">Layer 4</div>
+          <div class="ln">Validation &amp; renderer <span class="chip done"><i></i>tested</span></div>
+          <div class="ld">schema → provenance → citation → literal/modality/role/kind → legal scanner → backend-rendered quotes, pages, status</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="layer">
+          <div class="lt">Layer 5</div>
+          <div class="ln">Store <span class="chip done"><i></i>tested</span></div>
+          <div class="ld">Per-document SQLite + FTS5 · <code>secure_delete=ON</code> · DELETE journal (no WAL) · verified directory deletion</div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="node model">
+        <div class="tag">local model runtime</div>
+        <h3>Ollama · Gemma 4</h3>
+        <p><code>127.0.0.1:11434</code><br><code>/api/chat</code> · <code>think:false</code> · <code>stream:false</code> ·
+        JSON Schema · seed fixed · temp 0 · <code>num_ctx 8192</code><br><b>never a <code>tools</code> key</b></p>
+        <div class="chips" style="margin-top:8px"><span class="chip part"><i></i>adapter mock-tested</span></div>
+      </div>
+      <div class="node disk">
+        <div class="tag">local storage</div>
+        <h3>data/docs/&lt;doc_id&gt;/</h3>
+        <p>original file · SQLite DB · pages · sentences · chunks · FTS index · run ledger. 128-bit server-generated id; deletion removes the directory and reports it.</p>
+      </div>
+      <div class="node" style="background:var(--gray-soft)">
+        <div class="tag">trusted process</div>
+        <p class="mini" style="margin:0">The API and validator are trusted. Uploaded text, model output and tool arguments are
+        <b>untrusted</b>; every value that reaches the screen is re-derived from storage.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="lifecycle">
+  <h2><span class="num">2</span>Ask lifecycle — one question, end to end</h2>
+  <p class="lede">The state machine is fixed: <code>RECEIVE → CLASSIFY → PLAN → RETRIEVE → ANALYZE →
+  VALIDATE → RESPOND</code>. The fast path makes one model call; refinement adds at most one more;
+  the hard ceiling is four calls per question.</p>
+
+  <ol class="flow">
+    <li>
+      <h4>Receive and classify</h4>
+      <p><span class="who">backend</span>Validate the question (≤500 chars), bind it to a document bound server-side,
+      run the deterministic pre-router (fact / term / coverage / scope / legal boundary). A model route proposal
+      is used only when the pre-router is unsure; the stricter route wins.</p>
+    </li>
+    <li>
+      <h4>Plan and retrieve</h4>
+      <p><span class="who">backend</span>Build a quoted FTS5 query, expand with the rental-topic lexicon and extracted
+      cross-references, cap at 12 chunks, score by BM25. The silence gate decides whether a “not found” claim is
+      even permissible.</p>
+    </li>
+    <li>
+      <h4>Analyse with the local model</h4>
+      <p><span class="who">gemma 4</span>Reads a nonce-delimited, bounded evidence packet and returns
+      <code>{points:[{point_id, kind, text, sids}]}</code>. It may only cite ids present in this run’s packet.
+      No tools, no quotes, no verdicts.</p>
+    </li>
+    <li>
+      <h4>Validate deterministically</h4>
+      <p><span class="who">backend</span>Schema → provenance → quote integrity → literals &amp; dates → modality/negation →
+      tenant/landlord roles → conflict section diversity → legal-verdict scanner. A point that fails is dropped,
+      never softened.</p>
+    </li>
+    <li>
+      <h4>Render the answer</h4>
+      <p><span class="who">backend</span>Attach the exact stored quotes, page and section. Separate explicit points
+      from interpretations, concerns and ambiguities. If nothing survives validation, degrade to
+      <code>INSUFFICIENT_EVIDENCE</code>.</p>
+    </li>
+    <li>
+      <h4>Respond with a truthful status</h4>
+      <p><span class="who">backend</span>Resolve status by fixed precedence, attach missing-information reasons and
+      (only if already in the store) escalation questions. <code>legal_verdict</code> is always <code>null</code>.</p>
+    </li>
+  </ol>
+
+  <div class="grid2" style="margin-top:16px">
+    <div class="card">
+      <b>Budgets that never bend</b>
+      <ul class="tight2">
+        <li>1 fast-path model call; +1 refinement; <b>ceiling 4</b> including retries</li>
+        <li>≤8 tool calls, ≤2 retrieval loops, ≤12 evidence chunks</li>
+        <li>Packet ≈2,500 estimated tokens (chars ÷ 3.2), pre-budgeted against <code>num_ctx 8192</code></li>
+        <li>Wall clock ≤ 4× Day-0 p50; skip refinement once half the budget is spent</li>
+        <li>Question ≤500 characters; one format retry, then fail closed</li>
+      </ul>
+    </div>
+    <div class="card">
+      <b>Who decides what</b>
+      <ul class="tight2">
+        <li><b>Model:</b> route proposal (only if asked), query expansion, one <code>NextAction</code>, wording of
+        restatement/interpretation/concern points</li>
+        <li><b>Backend:</b> ids, offsets, retrieval, citations, pages, sections, statuses, missing-information codes,
+        legal policy, deletion, network policy</li>
+        <li><b>Never:</b> model-authored quotes, file paths, evidence ids or legal conclusions</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="trust">
+  <h2><span class="num">3</span>Trust boundaries</h2>
+  <p class="lede">The trust boundary is the request-handling code, not the loopback interface. Same-user malware,
+  OS compromise and physical access are explicitly out of scope.</p>
+  <div class="wrap-table">
+    <table>
+      <thead><tr><th style="width:130px">Zone</th><th>Contains</th><th style="width:46%">Rule</th></tr></thead>
+      <tbody>
+        <tr><td><b>Untrusted</b></td><td>Uploaded file, extracted text, OCR output, headers/footnotes/tables/metadata,
+          filenames, model answers, router proposals, tool arguments</td>
+          <td>Never concatenated into instructions as authoritative; bounded, nonce-delimited, validated; the model
+          cannot cause a network call, file access or deletion.</td></tr>
+        <tr><td><b>Trusted</b></td><td>FastAPI handlers, validator, renderer, legal policy, store layer, deletion coordinator</td>
+          <td>Owns quotes, ids, statuses, paths and policy. Re-derives everything shown to the user from stored data.</td></tr>
+        <tr><td><b>Semi-trusted</b></td><td>PDF parser child process, OCR executable, local model runtime</td>
+          <td>Sandboxed by limits/timeouts; output re-validated by the parent; failures fail closed.</td></tr>
+        <tr><td><b>Out of scope</b></td><td>Same-user malware, root/admin, disk forensics, cloud-synced folders</td>
+          <td>Documented in <code>PRIVACY.md</code> and <code>LIMITATIONS.md</code>; never contradicted by UI wording.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="data">
+  <h2><span class="num">4</span>Data model</h2>
+  <p class="lede">One SQLite database per document. Sentences are the citation unit; chunks are the retrieval unit;
+  FTS5 is an external-content index with triggers, so lexical search never diverges from stored text.</p>
+
+  <div class="dm">
+    <div class="ent"><b>documents</b><span>doc_id (32-hex) · sha256 · display name · pages · language · created_at</span></div>
+    <div class="rel">→</div>
+    <div class="ent"><b>pages</b><span>page_no · method (text/ocr) · text · hashes · quality flags</span></div>
+    <div class="rel">→</div>
+    <div class="ent"><b>sentences</b><span>sid · page · char start/end · section · text</span></div>
+    <div class="rel">→</div>
+    <div class="ent hot"><b>chunks</b><span>chunk_id · sid range · text · page · section</span></div>
+    <div class="rel">→</div>
+    <div class="ent"><b>chunks_fts</b><span>FTS5 external content · BM25 · number index</span></div>
+  </div>
+
+  <div class="grid2" style="margin-top:16px">
+    <div class="card">
+      <b>Invariants</b>
+      <ul class="tight2">
+        <li><code>sid</code> is stable for a document version and maps to exact stored bytes</li>
+        <li>Quotes are sliced from <code>sentences.text</code>, never from the model</li>
+        <li><code>secure_delete=ON</code>, <code>journal_mode=DELETE</code>, foreign keys on, no WAL, no history</li>
+        <li>Run ledger stores route, tool names, counts, validation codes and duration — never text</li>
+      </ul>
+    </div>
+    <div class="card">
+      <b>Retention</b>
+      <ul class="tight2">
+        <li>Source + DB: until the user deletes the document</li>
+        <li>Question and answer: request lifetime only</li>
+        <li>Browser token: JS memory; tab lifetime</li>
+        <li>Deletion: directory removed, canary scan, honest “not forensic erasure” report</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="modules">
+  <h2><span class="num">5</span>Module map</h2>
+  <p class="lede">72 Python files across 11 backend packages, plus a small React shell. Status reflects tests that were
+  actually run on 2026-10-18 (117 passed, 1 skipped; ruff clean; frontend 44 modules).</p>
+  <div class="wrap-table">
+    <table class="tight">
+      <thead><tr><th style="width:24%">Package</th><th>Responsibility</th><th style="width:150px">Status</th></tr></thead>
+      <tbody>
+        <tr><td><code>core/</code></td><td>Closed enums, status precedence, run budget, token estimate</td><td><span class="chip done"><i></i>tested</span></td></tr>
+        <tr><td><code>schemas/</code></td><td>Strict <code>ModelAnswer</code>, <code>NextAction</code>, <code>RenderedAnswer</code></td><td><span class="chip done"><i></i>tested</span></td></tr>
+        <tr><td><code>security/</code></td><td>Launch codes, in-memory sessions, Host/Origin allowlists, CSP headers</td><td><span class="chip done"><i></i>tested</span></td></tr>
+        <tr><td><code>api/</code></td><td>Session, health, documents (upload/list/delete/pages/image), ask, review, overview, evidence — all live</td><td><span class="chip done"><i></i>all routes wired</span></td></tr>
+        <tr><td><code>ingest/</code></td><td>Upload validation, PDF/TXT parsing in a child process, OCR hook, language/quality gates</td><td><span class="chip done"><i></i>tested (OCR unexercised)</span></td></tr>
+        <tr><td><code>store/</code></td><td>Schema, PRAGMAs, FTS5, rows, verified deletion</td><td><span class="chip done"><i></i>tested</span></td></tr>
+        <tr><td><code>retrieval/</code></td><td>Quoted FTS query, topics, cross-refs, silence gate, packets</td><td><span class="chip done"><i></i>primitives</span></td></tr>
+        <tr><td><code>agent/</code></td><td>Pre-router, bounded tools, nonce-delimited prompts, runtime with budget and one refinement</td><td><span class="chip done"><i></i>scripted-model run</span></td></tr>
+        <tr><td><code>model/</code></td><td>Provider protocol, native Ollama adapter, allowlist (Gemma E4B/E2B, Hermes), availability probe</td><td><span class="chip part"><i></i>no live call</span></td></tr>
+        <tr><td><code>validation/</code></td><td>Provenance, literals, modality, roles, kind checks, legal scanner, renderer</td><td><span class="chip done"><i></i>tested</span></td></tr>
+        <tr><td><code>services/</code></td><td>Answer, overview, review, silence decision, glossary, documents, lifecycle/delete, canaries</td><td><span class="chip done"><i></i>tested</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="status">
+  <h2><span class="num">6</span>Status precedence</h2>
+  <p class="lede">The worst relevant condition wins. The order is a closed list in <code>core/enums.py</code>; there is
+  no model-chosen status.</p>
+  <div class="ladder">
+    <div class="rung hard"><div class="n">1</div><div class="bar"><b>ERROR_PROCESSING</b><em>internal failure · fail closed</em></div></div>
+    <div class="rung hard"><div class="n">2</div><div class="bar"><b>ERROR_LOCAL_MODEL_UNAVAILABLE</b><em>no cloud fallback</em></div></div>
+    <div class="rung hard"><div class="n">3</div><div class="bar"><b>LEGAL_LIMIT</b><em>needs a professional · neutral template</em></div></div>
+    <div class="rung med"><div class="n">4</div><div class="bar"><b>CONFLICTING</b><em>two clauses disagree</em></div></div>
+    <div class="rung med"><div class="n">5</div><div class="bar"><b>AMBIGUOUS</b><em>vague wording in the document</em></div></div>
+    <div class="rung med"><div class="n">6</div><div class="bar"><b>INSUFFICIENT_EVIDENCE</b><em>cannot support or prove absence</em></div></div>
+    <div class="rung soft"><div class="n">7</div><div class="bar"><b>NOT_LOCATED</b><em>silence gate passed: checked readable text</em></div></div>
+    <div class="rung soft"><div class="n">8</div><div class="bar"><b>LIMITED</b><em>partial support for the question</em></div></div>
+    <div class="rung soft"><div class="n">9</div><div class="bar"><b>OUT_OF_SCOPE</b><em>not a rental-agreement question</em></div></div>
+    <div class="rung ok"><div class="n">10</div><div class="bar"><b>ANSWERED</b><em>all rendered points validated</em></div></div>
+  </div>
+  <p class="note">Missing-information codes are also a closed enum: <code>UNREADABLE_CONTENT</code>,
+  <code>REFERENCED_MATERIAL_NOT_PROVIDED</code>, <code>TOPIC_NOT_LOCATED</code>, <code>CONTEXT_REQUIRED</code>.</p>
+</section>
+
+<!-- 7 -->
+<section id="phases">
+  <h2><span class="num">7</span>Build order</h2>
+  <p class="lede">Evaluation and privacy evidence (Phase 6) come before UI polish (Phase 5) on purpose. The pattern
+  from the review: build the deterministic spine first, then the model, then prove the claims.</p>
+  <div class="phasegrid">
+    <div class="ph part"><b>Phase 0</b><span>scaffold · docs · CI</span></div>
+    <div class="ph done"><b>Phase 1</b><span>PDF child process · upload/delete</span></div>
+    <div class="ph part"><b>Phase 1b</b><span>OCR hook (Tesseract absent)</span></div>
+    <div class="ph todo"><b>Phase 2</b><span>model acceptance · Day-0 gate</span></div>
+    <div class="ph done"><b>Phase 3</b><span>FTS · silence · topics</span></div>
+    <div class="ph done"><b>Phase 4</b><span>runtime · ask · validation</span></div>
+    <div class="ph part"><b>Phase 6</b><span>fixture eval · privacy pending</span></div>
+    <div class="ph part"><b>Phase 5</b><span>overview/review · UI (no axe)</span></div>
+    <div class="ph todo"><b>Phase 7</b><span>hardening</span></div>
+    <div class="ph todo"><b>Phase 8–9</b><span>model selection ADR-0011 · submission pack</span></div>
+  </div>
+
+  <div class="grid2" style="margin-top:16px">
+    <div class="card">
+      <b>Green today (commands actually run)</b>
+      <ul class="tight2">
+        <li><code>pytest</code> → 111 passed, 1 skipped (opt-in live model)</li>
+        <li><code>ruff check backend tests scripts</code> → clean</li>
+        <li><code>npm run build</code> → tsc + Vite success</li>
+        <li>live smoke: <code>/</code> 200 with CSP; health 401 without token; bad Host 403</li>
+        <li>import sweep: 71/71 <code>app.*</code> modules import</li>
+      </ul>
+    </div>
+    <div class="card">
+      <b>Not green, by definition</b>
+      <ul class="tight2">
+        <li>No model call, benchmark, digest or context check</li>
+        <li>No PDF, OCR, upload, ask, review or overview flow</li>
+        <li>No evaluation: accuracy, UCR, citation precision, answer rate</li>
+        <li>No isolated-network run, canary report or negative control</li>
+        <li>No browser E2E or accessibility (axe) run</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  LexiGuard v3.1 · Apache-2.0 · ZeroDay OSS Hacktoberfest 2026, Problem Statement 2.
+  Design authority: <code>docs/SOLUTION_GUIDE_v3.md</code>. Implementation status:
+  <code>docs/IMPLEMENTATION_MAP.md</code>. Honest limits: <code>docs/LIMITATIONS.md</code>.
+  Nothing here is legal advice, and no claim on this page is a privacy or accuracy result.
+</footer>
+
+</div>
+</body>
+</html>

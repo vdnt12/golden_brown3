@@ -1,0 +1,37 @@
+
+name: Bug report
+description: Something in LexiGuard behaves incorrectly
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do **not** attach real rental agreements or personal data. Use the synthetic
+        fixtures in `fixtures/` or describe the problem abstractly.
+  - type: input
+    id: version
+    attributes:
+      label: Commit / version
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety
+      options:
+        - label: I have not included private documents, names or personal data.
+          required: true

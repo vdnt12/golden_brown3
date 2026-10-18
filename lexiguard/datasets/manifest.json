@@ -1,0 +1,23 @@
+{
+  "cuad": {
+    "name": "CUAD v1",
+    "url": "https://huggingface.co/datasets/theatticusproject/cuad/resolve/main/CUAD_v1/CUAD_v1.json",
+    "license": "CC BY 4.0",
+    "sha256": "ed0b77d85bdf4014d7495800e8e4a70565b48ee6f8a2e5dca9cf8655dbf10eae",
+    "bytes": 40128638,
+    "used_for": "deterministic pipeline validation: ingestion, quotation integrity, concept coverage on lawyer-annotated clause spans"
+  },
+  "india_law": {
+    "name": "PRS Legislative Brief - Model Tenancy Act, 2021",
+    "url": "https://prsindia.org/files/bills_acts/bills_parliament/2021/Legislative%20Brief%20-%20Model%20Tenancy%20Act%202021.pdf",
+    "license": "PRS India publishes legislative briefs for public use; redistributed here for evaluation only",
+    "sha256": "db30e5813241f843cc34d71372677c25abd6891e0e956f99aeee035c4de4abb4",
+    "bytes": 446080,
+    "used_for": "PDF parsing, language gate and concept coverage on Indian tenancy-law prose",
+    "inaccessible_sources": {
+      "https://www.indiacode.nic.in/bitstream/123456789/21157/1/english_16_of_2021.pdf": "blocked by edge bot filter (HTML error page)",
+      "https://mohua.gov.in/upload/whatsnew/60b7acb90a086Model-Tenancy-Act-English-02.06.2021.pdf": "HTTP 404",
+      "https://huggingface.co/datasets/vaquill/open-india-law": "gated dataset; HTTP 401 without an access token"
+    }
+  }
+}

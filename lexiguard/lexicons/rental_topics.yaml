@@ -1,0 +1,34 @@
+# Versioned rental-topic lexicon (Guide 7.1).
+# The lexicon aids retrieval only. It is not a legal taxonomy and never a judgment.
+version: 1
+topics:
+  - name: parties
+    synonyms: [landlord, tenant, lessor, lessee, licensor, licensee, owner, occupant, renter]
+  - name: deposit
+    synonyms: [security deposit, advance rent, token amount, refund of deposit, deposit]
+  - name: rent
+    synonyms: [monthly rent, lease rent, licence fee, rent]
+  - name: escalation
+    synonyms: [rent escalation, increase in rent, revision of rent, annual increase, escalation]
+  - name: term
+    synonyms: [period of tenancy, commencement date, start date, end date, duration, term]
+  - name: renewal
+    synonyms: [renewal option, extension of term, further term, renewal]
+  - name: notice
+    synonyms: [notice period, written notice, prior notice, notice to quit, notice]
+  - name: termination
+    synonyms: [early termination, early exit, cancellation, termination]
+  - name: lock_in
+    synonyms: [lock-in period, lock in period, minimum stay, lock-in]
+  - name: maintenance
+    synonyms: [structural repairs, whitewash, upkeep, repairs, maintenance]
+  - name: utilities
+    synonyms: [electricity charges, water charges, maintenance charges, utility bills, utilities]
+  - name: restrictions
+    synonyms: [subletting, sublet, guests, alterations, structural change, pets, restrictions]
+  - name: penalties
+    synonyms: [interest on arrears, late payment, deduction, forfeiture, penalty]
+  - name: handover
+    synonyms: [handover, hand over, possession, inventory list, keys, vacate]
+  - name: disputes
+    synonyms: [governing law, jurisdiction, venue, arbitration, courts, dispute]

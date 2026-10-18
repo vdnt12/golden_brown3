@@ -1,0 +1,21 @@
+# Topics that may depend on local law (Guide 9.5).
+# The UI shows a caution only; it never states what the law requires.
+version: 1
+label: "May depend on local law -- confirm locally."
+topics:
+  - name: deposit
+    covers: [deposit amounts, refund timelines, deductions]
+  - name: notice
+    covers: [notice periods, form of notice]
+  - name: eviction
+    covers: [eviction process, lock-in enforcement]
+  - name: rent_escalation
+    covers: [rent increases, revision frequency]
+  - name: stamping_registration
+    covers: [stamp duty, registration requirements]
+  - name: assignment_subletting
+    covers: [assignment, subletting consent]
+  - name: maintenance
+    covers: [repair obligations]
+  - name: governing_law_forum
+    covers: [governing law, dispute forum]

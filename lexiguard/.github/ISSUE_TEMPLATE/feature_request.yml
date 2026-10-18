@@ -1,0 +1,26 @@
+
+name: Feature request
+description: Propose a change that respects the locked design decisions
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fixed decisions (local-only model, lexical-first retrieval, backend-owned
+        citations, no legal verdicts) require an ADR to change.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+    validations:
+      required: true
+  - type: textarea
+    id: adr
+    attributes:
+      label: Does this require an ADR?

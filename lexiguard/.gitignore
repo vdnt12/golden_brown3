@@ -1,0 +1,52 @@
+
+# --- secrets and local state (never commit) ---
+.env
+.env.*
+*.pem
+*.key
+secrets/
+data/
+reports/privacy/*/raw/
+.lexiguard/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# --- Node / frontend ---
+node_modules/
+frontend/dist/
+.vite/
+*.tsbuildinfo
+
+# --- local models / weights ---
+models/
+*.gguf
+*.safetensors
+
+# --- user documents / uploads (synthetic fixtures live in fixtures/) ---
+*.pdf
+!fixtures/**/*.pdf
+*.docx
+*.doc
+
+# --- OS/editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# --- public evaluation datasets (reproducible via scripts/fetch_*.py) ---
+datasets/cuad/*.json
+datasets/india_law/*.pdf
+datasets/**/raw/

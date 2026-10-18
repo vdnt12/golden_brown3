@@ -1,0 +1,127 @@
+# Curated local glossary (Guide 9.4).
+# status: curated by the project team; NOT lawyer-reviewed.
+# Every entry must pass the verdict scanner unmodified (T-LEGAL-FP-01).
+version: 1
+review_status: "curated by the project team; not lawyer-reviewed"
+disclaimer: "General definitions, not from your document, and not legal advice."
+entries:
+  - id: security_deposit
+    term: "Security deposit"
+    aliases: ["deposit", "advance", "advance rent"]
+    definition: "Money paid by the tenant to the landlord at the start of a tenancy, held against unpaid rent or damage and usually returned after handover subject to deductions."
+    jurisdiction_note: "Amounts, refund timelines and permitted deductions commonly depend on local practice and the wording of the agreement."
+    reviewed: false
+  - id: lock_in_period
+    term: "Lock-in period"
+    aliases: ["lock in", "lock-in"]
+    definition: "A fixed minimum period during which ending the tenancy early can trigger the compensation stated in the agreement."
+    jurisdiction_note: "Enforcement and permitted exceptions can depend on local law."
+    reviewed: false
+  - id: notice_period
+    term: "Notice period"
+    aliases: ["notice"]
+    definition: "The length of time one side must give the other before ending the tenancy or changing its terms, usually required in writing."
+    jurisdiction_note: "The required length and form of notice can depend on local law."
+    reviewed: false
+  - id: indemnity
+    term: "Indemnity"
+    aliases: ["indemnify"]
+    definition: "A promise by one party to cover another party's loss or liability in stated situations."
+    jurisdiction_note: null
+    reviewed: false
+  - id: lien
+    term: "Lien"
+    aliases: []
+    definition: "A right to hold property or money until a debt or obligation is met."
+    jurisdiction_note: null
+    reviewed: false
+  - id: force_majeure
+    term: "Force majeure"
+    aliases: []
+    definition: "A contract term about events outside the parties' control that may suspend or excuse performance."
+    jurisdiction_note: null
+    reviewed: false
+  - id: subletting
+    term: "Subletting"
+    aliases: ["sublet", "sub-let"]
+    definition: "Allowing another person to use or occupy the premises under a separate arrangement while the original tenant keeps the tenancy."
+    jurisdiction_note: null
+    reviewed: false
+  - id: rent_escalation
+    term: "Rent escalation"
+    aliases: ["escalation", "rent increase"]
+    definition: "A stated increase in rent, often a fixed percentage or amount at set intervals."
+    jurisdiction_note: null
+    reviewed: false
+  - id: lessor
+    term: "Lessor"
+    aliases: []
+    definition: "The party that grants a lease; in ordinary usage, the landlord."
+    jurisdiction_note: null
+    reviewed: false
+  - id: lessee
+    term: "Lessee"
+    aliases: []
+    definition: "The party that takes a lease; in ordinary usage, the tenant."
+    jurisdiction_note: null
+    reviewed: false
+  - id: leave_and_licence
+    term: "Leave and licence"
+    aliases: ["leave and license", "licence"]
+    definition: "An arrangement where the owner grants permission to occupy property, often for a fixed period; its terms can differ from a lease."
+    jurisdiction_note: "The distinction between a lease and a licence can depend on local law and on how the arrangement operates in practice."
+    reviewed: false
+  - id: lease
+    term: "Lease"
+    aliases: []
+    definition: "A grant of exclusive possession of property for a defined period, usually in exchange for rent."
+    jurisdiction_note: null
+    reviewed: false
+  - id: arrears
+    term: "Arrears"
+    aliases: []
+    definition: "Rent or other amounts that are due but unpaid."
+    jurisdiction_note: null
+    reviewed: false
+  - id: handover
+    term: "Handover"
+    aliases: ["hand over", "vacate"]
+    definition: "The process of returning possession of the premises, including keys and any inventory, at the end of the tenancy."
+    jurisdiction_note: null
+    reviewed: false
+  - id: deduction
+    term: "Deduction"
+    aliases: []
+    definition: "An amount withheld from a deposit to cover unpaid dues or damage, as stated in the agreement."
+    jurisdiction_note: "What may lawfully be deducted can depend on local law."
+    reviewed: false
+  - id: forfeiture
+    term: "Forfeiture"
+    aliases: []
+    definition: "The loss of a deposit or right under a stated condition in the agreement."
+    jurisdiction_note: null
+    reviewed: false
+  - id: penalty_interest
+    term: "Penalty / interest on late payment"
+    aliases: ["late payment", "interest"]
+    definition: "An extra charge applied when a payment is late, as stated in the agreement."
+    jurisdiction_note: null
+    reviewed: false
+  - id: jurisdiction_clause
+    term: "Jurisdiction clause"
+    aliases: ["jurisdiction", "venue"]
+    definition: "A clause naming the courts or place whose law or forums the parties choose for disputes."
+    jurisdiction_note: "Which courts can hear a dispute is ultimately a question of law."
+    reviewed: false
+  - id: stamp_duty
+    term: "Stamp duty"
+    aliases: []
+    definition: "A tax on certain documents, commonly paid when a lease or licence is stamped."
+    jurisdiction_note: "Rates and requirements depend on local law."
+    reviewed: false
+  - id: registration
+    term: "Registration"
+    aliases: []
+    definition: "The formal recording of a document with a government office, commonly required for longer leases in some places."
+    jurisdiction_note: "Requirements and effects depend on local law."
+    reviewed: false

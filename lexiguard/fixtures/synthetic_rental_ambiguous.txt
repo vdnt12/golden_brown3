@@ -1,0 +1,34 @@
+RENTAL AGREEMENT (SYNTHETIC -- AMBIGUITY FIXTURE)
+
+1. Parties
+This agreement is between the owner and the occupier of House No. 21, Vidya Nagar,
+Hubballi.
+
+2. NO DEPOSIT
+The Tenant shall pay a security deposit of Rs. 40,000/- before occupation.
+
+3. Rent
+The Tenant shall pay rent at the market rate, to be revised from time to time as mutually
+agreed between the parties.
+
+4. Notice
+Either party may terminate the tenancy by giving reasonable notice in writing.
+
+5. Maintenance
+The Tenant shall bear usual maintenance charges. Major repairs shall be carried out as
+and when required by the Landlord.
+
+6. Deductions
+The Landlord may make appropriate deductions from the deposit for any damage.
+
+7. Guests
+Guests may stay for a reasonable period. Long-staying guests shall be informed to the
+Landlord.
+
+8. Subletting
+Subletting is subject to clause 17.
+
+9. Handover
+The property shall be handed over in good condition, subject to normal wear and tear.
+
+Synthetic test reference: CANARY-LG-AMBIGUOUS-004 (not personal data)

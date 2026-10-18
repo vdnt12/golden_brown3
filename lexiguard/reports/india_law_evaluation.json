@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-10-18T10:22:59+00:00",
+  "document": {
+    "name": "prs_model_tenancy_act_brief_2021.pdf",
+    "bytes": 446080,
+    "pages": 6,
+    "readable_pages": 6,
+    "unread_pages": [],
+    "ocr_used": false,
+    "quality_flags": []
+  },
+  "cards": {
+    "Parties": "FOUND",
+    "Term": "FOUND",
+    "Rent": "FOUND",
+    "Deposit": "FOUND",
+    "Notice": "FOUND",
+    "Lock-in": "INSUFFICIENT_EVIDENCE",
+    "Penalties": "FOUND",
+    "Restrictions": "FOUND",
+    "Maintenance": "FOUND",
+    "Disputes": "FOUND",
+    "Pets": "INSUFFICIENT_EVIDENCE"
+  },
+  "quotes": {
+    "checked": 24,
+    "exact_substring_failures": 0
+  },
+  "review": {
+    "review_status": "ATTENTION",
+    "items": 7,
+    "by_category": {
+      "CONFLICT": 2,
+      "AMBIGUITY": 0,
+      "FINANCIAL": 2,
+      "JURISDICTION": 3,
+      "OTHER": 0
+    },
+    "titles": [
+      "Possible conflicting rent wording",
+      "Possible conflicting rent wording",
+      "Money clause mentioning \u201cdeductions\u201d",
+      "Money clause mentioning \u201cpenalty\u201d",
+      "May depend on local law: deposit",
+      "May depend on local law: notice",
+      "May depend on local law: eviction"
+    ]
+  },
+  "statute_term_counts": {
+    "model tenancy act": 13,
+    "rent authority": 16,
+    "security deposit": 7,
+    "notice": 5,
+    "landlord": 35,
+    "tenant": 28
+  },
+  "interpretation": [
+    "The PDF parsed with no unread pages and no OCR, so the language gate did not misfire on Indian legal English.",
+    "Every quotation rendered from the map is an exact substring of stored text.",
+    "The review list contains conflict candidates because a policy brief compares different state positions; the detector treats two sections with different values as a candidate conflict. This is a known limitation on discursive documents and the UI labels every item as a candidate."
+  ]
+}

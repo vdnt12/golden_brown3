@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LexiGuard ground-truth question row",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "document",
+    "category",
+    "question",
+    "expected_status",
+    "gold_sids",
+    "expected_facts",
+    "forbidden_claims",
+    "annotator_note",
+    "annotation_status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^Q-[A-Z]+-\\d{3}$"
+    },
+    "document": {
+      "type": "string"
+    },
+    "category": {
+      "enum": [
+        "direct_fact",
+        "multi_clause",
+        "not_located",
+        "ambiguity",
+        "conflict",
+        "legal_boundary",
+        "term",
+        "injection",
+        "robustness",
+        "paraphrase_twin"
+      ]
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "expected_status": {
+      "enum": [
+        "ANSWERED",
+        "LIMITED",
+        "NOT_LOCATED",
+        "AMBIGUOUS",
+        "CONFLICTING",
+        "INSUFFICIENT_EVIDENCE",
+        "LEGAL_LIMIT",
+        "OUT_OF_SCOPE",
+        "ERROR_LOCAL_MODEL_UNAVAILABLE",
+        "ERROR_PROCESSING"
+      ]
+    },
+    "gold_sids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^s_\\d{4,8}$"
+      }
+    },
+    "gold_sections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expected_facts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "forbidden_claims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "language_condition": {
+      "type": "string"
+    },
+    "ocr_condition": {
+      "type": "string"
+    },
+    "annotator_note": {
+      "type": "string"
+    },
+    "annotation_status": {
+      "enum": [
+        "draft",
+        "reviewed",
+        "final"
+      ]
+    }
+  }
+}
